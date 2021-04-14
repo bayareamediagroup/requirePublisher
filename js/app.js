@@ -6,11 +6,6 @@ requirejs.config({
 		cargo: 'cargo',
 		helper4: 'helper4',
 		helper5: 'helper5'
-		/*
-		cargo: 'cargo',
-		helper3: 'helper3',
-		helper4: 'helper4',
-		*/
 	},
 	shim: {
 		underscore: {
@@ -19,5 +14,4 @@ requirejs.config({
 	}
 });
 
-//requirejs(['jquery', 'underscore', 'cargo', 'helper3', 'helper4', 'helper5']);
 requirejs(['jquery', 'underscore', 'cargo', 'helper4', 'helper5']);
