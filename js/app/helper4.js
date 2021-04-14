@@ -3,7 +3,7 @@ define(['jquery', 'underscore'], function ($, _) {
         alert("hourly forecast");
     });
 
-    let list = ['white', 'women', 'rock'];
+    let list = ['black', 'women', 'rock'];
 
     let i = 0;
 
