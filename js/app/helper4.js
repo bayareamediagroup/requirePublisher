@@ -1,7 +1,6 @@
-define(['./jquery', './underscore'], function ($, _) {
-
-    $("#jq").click(function(event) {
-        alert("Poor People");
+define(['jquery', 'underscore'], function ($, _) {
+    $("#hourly").click(function (event) {
+        alert("hourly forecast");
     });
 
     let list = ['white', 'women', 'rock'];
