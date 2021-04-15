@@ -9,6 +9,8 @@ define(['./jquery', './underscore', './init'], function ($, _, init) {
     var api = baseURL + "product=" + product + "&oneobservation=" + true + "&apiKey=" + _apiKey + "&zipcode=" + zipcode + "&metric=" + metric;
 
     var _current = document.getElementById('current');
+    var _list = document.getElementById('list');
+    var _item = document.getElementById('item');
 
 	xhr.onreadystatechange = function () {
 		if (this.readyState == 4 && this.status == 200) {
@@ -16,29 +18,18 @@ define(['./jquery', './underscore', './init'], function ($, _, init) {
 			const json = JSON.parse(this.responseText);
 			_current.innerHTML = json.observations.location[0].city + ", " + json.observations.location[0].state;
 
-			var template = _.template("<div><%= name %></div>", { name: 'Patrick Mims' });
-			var names = ['patrick', 'michael', 'fem'];
+			var template = _.template("<%= name %>", { name: 'Patrick Mims' });
+			var names = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 			var list = [];
 			var i = 0;
 
 			for(var i = 0; i < names.length; i++) {
-				list.push(template({ name: names[i] }));
+				//list.push(template({ name: names[i] }));
+				_item.innerHTML += '<div>' + template({ name: names[i] }) + '</div>';
 			}
 
-			console.log(list.join('-'));
+			//_item.innerHTML = list;
 			
-			/* next task, get the template working */
-
-			/*
-			let content = '';
-			let observationsCopy = [];
-			let weather_template = _.template("<div><%= json %><div>");
-
-			for(let i = 0; i < json.observations.location[0].observation[0]; i++) {
-				observationsCopy[i]	= json.observations.location[0].observation[0];
-			}
-			*/
-
 			var obj = Object.assign({}, json.observations.location[0].observation[0]);
 
 			_.each(obj, function(json) {
