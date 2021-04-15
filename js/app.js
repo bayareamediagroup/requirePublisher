@@ -3,6 +3,7 @@ requirejs.config({
 	paths: {
 		jquery: 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min',
 		underscore: 'https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore-min',
+		init: 'init',
 		cargo: 'cargo',
 		helper4: 'helper4',
 		helper5: 'helper5'
@@ -14,4 +15,4 @@ requirejs.config({
 	}
 });
 
-requirejs(['jquery', 'underscore', 'cargo', 'helper4', 'helper5']);
+requirejs(['jquery', 'underscore', 'cargo', 'helper4', 'helper5', 'init']);
