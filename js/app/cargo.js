@@ -1,4 +1,5 @@
-define(['./jquery', './underscore', './init'], function ($, _, init) {
+//define(['./jquery', './underscore', './init', './buildComponent'], function ($, _, init, bc) {
+define(['./jquery', './underscore', './vue',  './init'], function ($, _, Vue, init) {
     let xhr = new XMLHttpRequest();
     const baseURL = 'https://weather.ls.hereapi.com/weather/1.0/report.json?';
     const product = 'observation';
@@ -8,33 +9,33 @@ define(['./jquery', './underscore', './init'], function ($, _, init) {
 
     var api = baseURL + "product=" + product + "&oneobservation=" + true + "&apiKey=" + _apiKey + "&zipcode=" + zipcode + "&metric=" + metric;
 
-    var _current = document.getElementById('current');
-    var _list = document.getElementById('list');
-    var _item = document.getElementById('item');
+    //var _location = document.getElementById('location');
 
 	xhr.onreadystatechange = function () {
 		if (this.readyState == 4 && this.status == 200) {
-
 			const json = JSON.parse(this.responseText);
-			_current.innerHTML = json.observations.location[0].city + ", " + json.observations.location[0].state;
 
-			var template = _.template("<%= name %>", { name: 'Patrick Mims' });
-			var names = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+			const city = json.observations.location[0].city;
+			const state = json.observations.location[0].state;
+
+			new Vue({
+				el: '#location',
+				data: {
+					location: city + ", " + state
+				}
+			})
+			
 			var list = [];
-			var i = 0;
+			var days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+			var observationObj = Object.assign({}, json.observations.location[0].observation[0]);
 
-			for(var i = 0; i < names.length; i++) {
-				//list.push(template({ name: names[i] }));
-				_item.innerHTML += '<div>' + template({ name: names[i] }) + '</div>';
+			var template = _.template("<%= day %>");
+
+			for(var i = 0; i < days.length; i++) {
+				_item.innerHTML += '<div>' + template({ day: days[i] }) + '</div>';
 			}
 
-			//_item.innerHTML = list;
-			
-			var obj = Object.assign({}, json.observations.location[0].observation[0]);
-
-			_.each(obj, function(json) {
-				console.log("console: ", obj.ageMinutes);
-			});
+			console.log("console: ", observationObj.ageMinutes);
 		}
 	};
 
