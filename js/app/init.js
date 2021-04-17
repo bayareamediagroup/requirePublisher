@@ -1,14 +1,16 @@
 define(['./jquery', './underscore'], function ($, _) {
     var wrapper = document.createElement('div');
     wrapper.id = 'wrapper';
-    wrapper.style = "background-color: #4f94d4; border-radius: 5px; height: 300px; width: 300px;padding: 10px;";
+    wrapper.style = "background-color: #4f94d4; border-radius: 5px; height: 300px; width: 320px; padding: 10px;";
 
 	var location_wrapper = document.createElement('div');
 	location_wrapper.id = 'location';
     location_wrapper.innerHTML = '{{location}}';
+    location_wrapper.style = 'color: #fff; font-size: 20px;';
 
     var current_wrapper = document.createElement('div');
     current_wrapper.id = 'current';
+    current_wrapper.innerHTML = '{{temperature}}';
     current_wrapper.style = 'color: #fff; font-size: 20px;';
 
 	var list_wrapper = document.createElement('div');
