@@ -6,6 +6,7 @@ requirejs.config({
 		vue: 'https://cdn.jsdelivr.net/npm/vue/dist/vue',
 		init: 'init',
 		cargo: 'cargo',
+		metric: 'metric',
 		helper4: 'helper4',
 		helper5: 'helper5'
 	},
@@ -16,4 +17,4 @@ requirejs.config({
 	}
 });
 
-requirejs(['jquery', 'underscore', 'vue', 'cargo', 'helper4', 'helper5', 'init']);
+requirejs(['jquery', 'underscore', 'vue', 'cargo', 'metric', 'helper4', 'helper5', 'init']);
