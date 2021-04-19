@@ -4,15 +4,15 @@ define(['./jquery', './underscore', './vue',  './init'], function ($, _, Vue, in
     const product = 'observation';
     const _apiKey = 'z5DpKECxcT9bjrURVyaR0qrWT94M5xgcxed12zU0rdc';
     const zipcode = 94606;
-    var metric = false;
 
     var api = baseURL + "product=" + product + "&oneobservation=" + true + "&apiKey=" + _apiKey + "&zipcode=" + zipcode + "&metric=" + metric;
+	var obj = {};
+	var scale = {fahrenheit: 'F', celsius: 'C'};
 
 	xhr.onreadystatechange = function () {
-		var scale = {fahrenheit: 'F', celsius: 'C'};
 		if (this.readyState == 4 && this.status == 200) {
 			const json = JSON.parse(this.responseText);
-			const obj = Object.assign({}, json.observations.location[0].observation[0]);
+			Object.assign(obj, json.observations.location[0].observation[0]);
 
 			new Vue({
 				el: '#location',
@@ -38,7 +38,7 @@ define(['./jquery', './underscore', './vue',  './init'], function ($, _, Vue, in
 						this.scale = scale.celsius
 					}
 				},
-				template: `<div v-on:click='change_scale'>{{scale}}</div>`
+				template: `<span v-on:click='change_scale'>{{scale}}</span>`
 			})
 
 			new Vue({

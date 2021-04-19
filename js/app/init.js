@@ -8,9 +8,9 @@ define(['./jquery', './underscore'], function ($, _) {
     location_wrapper.innerHTML = '{{location}}';
     location_wrapper.style = 'color: #000; font-size: 20px;';
 
-    var current_wrapper = document.createElement('div');
+    var current_wrapper = document.createElement('span');
     current_wrapper.id = 'current';
-    current_wrapper.innerHTML = '{{temperature}}' + '&deg';
+    current_wrapper.innerHTML = '{{temperature}}' + '&deg&nbsp;';
     current_wrapper.style = 'color: #fff; font-size: 20px;';
 
     var observations_wrapper = document.createElement('div');
@@ -23,17 +23,13 @@ define(['./jquery', './underscore'], function ($, _) {
 
     var scale = document.createElement('span');
     scale.id = 'scale'; 
-    scale.setAttribute('data-v-on:click', 'greet');
-    scale.innerHTML = '{{measure}}';
-
-    //<button v-on:click="units">F</button> 
 
     document.getElementById('wx').appendChild(wrapper);
     document.getElementById('wrapper').appendChild(location_wrapper);
     document.getElementById('wrapper').appendChild(current_wrapper);
+    document.getElementById('wrapper').appendChild(scale);
     document.getElementById('wrapper').appendChild(observations_wrapper);
     document.getElementById('wrapper').appendChild(list_wrapper);
-    document.getElementById('wrapper').appendChild(scale);
     const menu = document.querySelector("#jq");
     menu.innerHTML = "query";
 });
