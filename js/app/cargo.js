@@ -1,13 +1,15 @@
-define(['./jquery', './underscore', './vue',  './init'], function ($, _, Vue, init) {
-    let xhr = new XMLHttpRequest();
-    const baseURL = 'https://weather.ls.hereapi.com/weather/1.0/report.json?';
-    const product = 'observation';
-    const _apiKey = 'z5DpKECxcT9bjrURVyaR0qrWT94M5xgcxed12zU0rdc';
-    const zipcode = 94606;
+define(['./jquery', './underscore', './vue', './init'], function ($, _, Vue, init) {
+	let xhr = new XMLHttpRequest();
+	const baseURL = 'https://weather.ls.hereapi.com/weather/1.0/report.json?';
+	const product = 'observation';
+	const _apiKey = 'z5DpKECxcT9bjrURVyaR0qrWT94M5xgcxed12zU0rdc';
+	const zipcode = 94606;
 
-    var api = baseURL + "product=" + product + "&oneobservation=" + true + "&apiKey=" + _apiKey + "&zipcode=" + zipcode + "&metric=" + metric;
 	var obj = {};
-	var scale = {fahrenheit: 'F', celsius: 'C'};
+	var metric = false;
+
+	const api = baseURL + "product=" + product + "&oneobservation=" + true + "&apiKey=" + _apiKey + "&zipcode=" + zipcode + "&metric=" + metric;
+	const scale = { fahrenheit: 'F', celsius: 'C' };
 
 	xhr.onreadystatechange = function () {
 		if (this.readyState == 4 && this.status == 200) {
@@ -25,7 +27,7 @@ define(['./jquery', './underscore', './vue',  './init'], function ($, _, Vue, in
 				el: '#current',
 				data: {
 					temperature: obj.temperature.slice(0, 2)
-				} 
+				}
 			})
 
 			new Vue({
@@ -42,12 +44,19 @@ define(['./jquery', './underscore', './vue',  './init'], function ($, _, Vue, in
 			})
 
 			new Vue({
+				el: '#dte',
+				data: {
+					local: new Date().toLocaleString()
+				}
+			})
+
+			new Vue({
 				el: "#app-4",
 				data: {
 					obj
 				},
 				methods: {
-					units: function() {
+					units: function () {
 						this.obj.daylight = 'PP'
 					}
 				}
@@ -82,6 +91,6 @@ define(['./jquery', './underscore', './vue',  './init'], function ($, _, Vue, in
 		}
 	};
 
-    xhr.open("get", api, true)
-    xhr.send();
+	xhr.open("get", api, true)
+	xhr.send();
 });

@@ -23,12 +23,24 @@ define(['./jquery', './underscore'], function ($, _) {
 
     var scale = document.createElement('span');
     scale.id = 'scale'; 
+    scale.style = 'color: #fff; font-size: 8px;';
+
+    var date_wrapper = document.createElement('div');
+    date_wrapper.id = 'dte';
+    date_wrapper.style = "font-style: italic;";
+    date_wrapper.innerHTML = 'Last updated {{local}}';
+
+    var forecast_wrapper = document.createElement('div');
+    forecast_wrapper.id = 'fct';
+    forecast_wrapper.style = "font-style: italic;";
 
     document.getElementById('wx').appendChild(wrapper);
     document.getElementById('wrapper').appendChild(location_wrapper);
     document.getElementById('wrapper').appendChild(current_wrapper);
     document.getElementById('wrapper').appendChild(scale);
+    document.getElementById('wrapper').appendChild(date_wrapper);
     document.getElementById('wrapper').appendChild(observations_wrapper);
+    document.getElementById('wrapper').appendChild(forecast_wrapper);
     document.getElementById('wrapper').appendChild(list_wrapper);
     const menu = document.querySelector("#jq");
     menu.innerHTML = "query";
