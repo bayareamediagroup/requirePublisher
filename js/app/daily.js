@@ -24,7 +24,8 @@ define(['./jquery', './underscore', './vue', './init'], function ($, _, Vue, ini
                 },
                 template: `<ul>
                                 <li v-for="item in forecast">
-                                    <div>{{item.highTemperature}} - {{item.description}}</div>
+                                    <div>{{item.highTemperature.slice(0,2)}}&deg; -> {{item.description}}</div>
+                                    <div><img v-bind:src="item.iconLink"></div>
                                 </li>
                            </ul>`
             })
