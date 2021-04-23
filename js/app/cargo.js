@@ -50,18 +50,6 @@ define(['./jquery', './underscore', './vue', './init'], function ($, _, Vue, ini
 				}
 			})
 
-			new Vue({
-				el: "#app-4",
-				data: {
-					obj
-				},
-				methods: {
-					units: function () {
-						this.obj.daylight = 'PP'
-					}
-				}
-			})
-
 			// this is what i need to createElement
 			//<button v-on:click="units">F</button>
 			/*
