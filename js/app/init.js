@@ -1,4 +1,4 @@
-define(['./jquery', './underscore'], function ($, _) {
+define(['./bootstrap', './jquery', './underscore'], function (bootstrap, $, _) {
     var wrapper = document.createElement('div');
     wrapper.id = 'wrapper';
     wrapper.style = "background-color: #4f94d4; border-radius: 5px; height: 300px; width: 320px; padding: 10px;";
@@ -34,6 +34,17 @@ define(['./jquery', './underscore'], function ($, _) {
     forecast_wrapper.id = 'fct';
     forecast_wrapper.style = "font-style: italic;";
 
+    var change_location = document.createElement('div');
+    change_location.id = 'changeLoc';
+    change_location.style = "font-size: italic";
+    change_location.innerHTML = "<span v-on:click='change_location'>{{change}}</span>";
+
+    var link = document.createElement("link");
+    link.type = "text/css";
+    link.rel = "stylesheet";
+    link.href = 'https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap-grid.min.css';
+
+    document.getElementsByTagName("head")[0].appendChild(link);
     document.getElementById('wx').appendChild(wrapper);
     document.getElementById('wrapper').appendChild(location_wrapper);
     document.getElementById('wrapper').appendChild(current_wrapper);
@@ -41,7 +52,6 @@ define(['./jquery', './underscore'], function ($, _) {
     document.getElementById('wrapper').appendChild(date_wrapper);
     document.getElementById('wrapper').appendChild(observations_wrapper);
     document.getElementById('wrapper').appendChild(forecast_wrapper);
+    document.getElementById('wrapper').appendChild(change_location);
     document.getElementById('wrapper').appendChild(list_wrapper);
-    const menu = document.querySelector("#jq");
-    menu.innerHTML = "query";
 });

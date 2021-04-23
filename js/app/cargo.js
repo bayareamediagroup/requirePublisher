@@ -38,9 +38,12 @@ define(['./jquery', './underscore', './vue', './init'], function ($, _, Vue, ini
 				methods: {
 					change_scale: function () {
 						this.scale = scale.celsius
+					},
+					change_fahrenheit: function() { 
+						this.scale = scale.fahrenheit
 					}
 				},
-				template: `<span v-on:click='change_scale'>{{scale}}</span>`
+				template: `<span v-on:click='change_scale' v-show='change_fahrenheit'>{{scale}}</span>`
 			})
 
 			new Vue({
@@ -50,32 +53,17 @@ define(['./jquery', './underscore', './vue', './init'], function ($, _, Vue, ini
 				}
 			})
 
-			// this is what i need to createElement
-			//<button v-on:click="units">F</button>
-			/*
 			new Vue({
-				el: 'observation',
+				el: '#changeLoc',
 				data: {
-					message: this.getMetric()
-				},
+					change: "Change Location" 
+				},  
 				methods: {
-					makeCall: function () {
-						let xhr = new XMLHttpRequest();
-
-						xhr.onreadystatechange = function () {
-							if (this.readyState == 4 && this.status == 200) {
-								const json = JSON.parse(this.responseText);
-								const obj = Object.assign({}, json.observations.location[0].observation[0]);
-							}
-						};
-
-						xhr.open("get", this.api, true)
-						xhr.send();
+					change_location: function() {
+						this.change = "San Francisco"
 					}
-
 				}
 			})
-			*/
 		}
 	};
 

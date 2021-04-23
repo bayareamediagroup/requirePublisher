@@ -22,23 +22,15 @@ define(['./bootstrap', './jquery', './underscore', './vue', './init'], function 
                 data: {
                     forecast: obj
                 },
+                methods: {
+                    something: function() {
+                        console.log("I am clicked");
+                    }
+                },
                 template: `<div>
                             <div>Daily Forecast</div>
                             <br/>
-                            <div class="row no-gutters">
-                                <span v-for="item in forecast" class="col-2">
-                                    <img v-bind:src="item.iconLink" style="height: 30px">
-                                    <br/>
-                                    {{item.highTemperature.slice(0,2)}}&deg;<br/>Hi
-                                </span>
-                            </div>
-                           </div>`
-                                /*
-                                       <!-- 
-                                        <img v-bind:src="item.iconLink">
-                                        {{item.description}}
-                                        -->
-                                        */
+                            <div class="row no-gutters"><span v-for="(item, index) in forecast" v-if="index < 6" class="col-2" style="text-align: center">{{item.weekday.slice(0, 3)}}<br/><img @click="something" v-bind:src="item.iconLink" style="height: 30px"><br/>{{item.highTemperature.slice(0,2)}}&deg;<br/></span></div></div>`
             })
         }
     };
