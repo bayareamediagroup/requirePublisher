@@ -23,7 +23,7 @@ define(['./bootstrap', './jquery', './underscore', './vue', './init'], function 
                     forecast: obj
                 },
                 methods: {
-                    something: function() {
+                    something: function () {
                         console.log("I am clicked");
                     }
                 },
@@ -31,6 +31,18 @@ define(['./bootstrap', './jquery', './underscore', './vue', './init'], function 
                             <div>Daily Forecast</div>
                             <br/>
                             <div class="row no-gutters"><span v-for="(item, index) in forecast" v-if="index < 6" class="col-2" style="text-align: center">{{item.weekday.slice(0, 3)}}<br/><img @click="something" v-bind:src="item.iconLink" style="height: 30px"><br/>{{item.highTemperature.slice(0,2)}}&deg;<br/></span></div></div>`
+            })
+
+            Vue.component('city-component', {
+                props: ['cty'],
+                template: '<div>{{ cty.daylight }}</div>'
+            })
+
+            new Vue({
+                el: '#todo',
+                data: {
+                    todo: obj
+                }
             })
         }
     };

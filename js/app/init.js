@@ -22,7 +22,7 @@ define(['./bootstrap', './jquery', './underscore'], function (bootstrap, $, _) {
     list_wrapper.style = 'v-model="forecast"';
 
     var scale = document.createElement('span');
-    scale.id = 'scale'; 
+    scale.id = 'scale';
     scale.style = 'color: #fff; font-size: 8px;';
 
     var date_wrapper = document.createElement('div');
@@ -37,7 +37,21 @@ define(['./bootstrap', './jquery', './underscore'], function (bootstrap, $, _) {
     var change_location = document.createElement('div');
     change_location.id = 'changeLoc';
     change_location.style = "font-size: italic";
-    change_location.innerHTML = "<span v-on:click='change_location'>{{change}}</span>";
+    change_location.innerHTML = "<br/><span v-on:click='change_location'>{{change}}</span>";
+
+    var todo_wrapper = document.createElement('div');
+    todo_wrapper.id = 'todo';
+    todo_wrapper.innerHTML = "<city-component v-for='item in todo' v-bind:cty='item' v-bind:key='item.id'></city-component>";
+
+    var mapbox_wrapper = document.createElement('div');
+    mapbox_wrapper.id = 'map';
+    mapbox_wrapper.style = "border-radius: 5px; height: 100px; width: 100%";
+
+    var map_css = document.createElement('link');
+    map_css.type = "text/css";
+    map_css.rel = "stylesheet";
+    map_css.href = "https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css";
+    document.getElementsByTagName('head')[0].appendChild(map_css);
 
     var link = document.createElement("link");
     link.type = "text/css";
@@ -52,6 +66,8 @@ define(['./bootstrap', './jquery', './underscore'], function (bootstrap, $, _) {
     document.getElementById('wrapper').appendChild(date_wrapper);
     document.getElementById('wrapper').appendChild(observations_wrapper);
     document.getElementById('wrapper').appendChild(forecast_wrapper);
+    document.getElementById('wrapper').appendChild(mapbox_wrapper);
     document.getElementById('wrapper').appendChild(change_location);
+    document.getElementById('wrapper').appendChild(todo_wrapper);
     document.getElementById('wrapper').appendChild(list_wrapper);
 });

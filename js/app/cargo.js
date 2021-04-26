@@ -1,4 +1,4 @@
-define(['./jquery', './underscore', './vue', './init'], function ($, _, Vue, init) {
+define(['./jquery', './underscore', './mapbox', './vue', './init'], function ($, _, mapbox, Vue, init) {
 	let xhr = new XMLHttpRequest();
 	const baseURL = 'https://weather.ls.hereapi.com/weather/1.0/report.json?';
 	const product = 'observation';
@@ -10,6 +10,8 @@ define(['./jquery', './underscore', './vue', './init'], function ($, _, Vue, ini
 
 	const api = baseURL + "product=" + product + "&oneobservation=" + true + "&apiKey=" + _apiKey + "&zipcode=" + zipcode + "&metric=" + metric;
 	const scale = { fahrenheit: 'F', celsius: 'C' };
+
+	mapbox.accessToken = 'pk.eyJ1IjoiYmluYXJ5dGhpbmtlciIsImEiOiJjaW9ocmhpanUwMDhxdHNtMXA0bjdoYnd3In0.1fLJ9SuR3rSW8lueJeaurg';
 
 	xhr.onreadystatechange = function () {
 		if (this.readyState == 4 && this.status == 200) {
@@ -60,10 +62,22 @@ define(['./jquery', './underscore', './vue', './init'], function ($, _, Vue, ini
 				},  
 				methods: {
 					change_location: function() {
-						this.change = "San Francisco"
+						if(this.change == "Change Location") {
+							this.change = "Oakland"
+						} else if(this.change == "Oakland") {
+							this.change = "Change Location"
+						}
 					}
 				}
 			})
+
+			new mapbox.Map({
+				container: 'map',
+				style: 'mapbox://styles/mapbox/streets-v11',
+				center: [-74.5, 40],
+				zoom: 9
+			});
+
 		}
 	};
 
