@@ -11,8 +11,6 @@ define(['./jquery', './underscore', './mapbox', './vue', './init'], function ($,
 	const api = baseURL + "product=" + product + "&oneobservation=" + true + "&apiKey=" + _apiKey + "&zipcode=" + zipcode + "&metric=" + metric;
 	const scale = { fahrenheit: 'F', celsius: 'C' };
 
-	mapbox.accessToken = 'pk.eyJ1IjoiYmluYXJ5dGhpbmtlciIsImEiOiJjaW9ocmhpanUwMDhxdHNtMXA0bjdoYnd3In0.1fLJ9SuR3rSW8lueJeaurg';
-
 	xhr.onreadystatechange = function () {
 		if (this.readyState == 4 && this.status == 200) {
 			const json = JSON.parse(this.responseText);
@@ -70,14 +68,6 @@ define(['./jquery', './underscore', './mapbox', './vue', './init'], function ($,
 					}
 				}
 			})
-
-			new mapbox.Map({
-				container: 'map',
-				style: 'mapbox://styles/mapbox/streets-v11',
-				center: [-74.5, 40],
-				zoom: 9
-			});
-
 		}
 	};
 
