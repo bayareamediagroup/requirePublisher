@@ -1,7 +1,7 @@
 define(['./bootstrap', './jquery', './underscore'], function (bootstrap, $, _) {
     var wrapper = document.createElement('div');
     wrapper.id = 'wrapper';
-    wrapper.style = "background-color: #4f94d4; border-radius: 5px; height: 300px; width: 320px; padding: 10px;";
+    wrapper.style = "background-color: #4f94d4; border-radius: 5px; height: 330px; width: 320px; padding: 10px;";
 
     var location_wrapper = document.createElement('div');
     location_wrapper.id = 'location';
@@ -32,7 +32,6 @@ define(['./bootstrap', './jquery', './underscore'], function (bootstrap, $, _) {
 
     var forecast_wrapper = document.createElement('div');
     forecast_wrapper.id = 'fct';
-    forecast_wrapper.style = "font-style: italic;";
 
     var change_location = document.createElement('div');
     change_location.id = 'changeLoc';
